@@ -93,6 +93,7 @@ else{
 })
 
 var move_card=(card_id,dir)=>{
+ 
    //check if card is movable
 let board=document.getElementById("board");
 let card=document.getElementById("card_"+card_id);
@@ -113,6 +114,12 @@ if(card===first_el){
 alert("Sorry, this card cannot be moved in this direction any further.");
 return
 }
+else{
+  
+let prev_el=card.previousElementSibling;
+cont.insertBefore(card,prev_el);
+
+}
 
 }
 else if(dir==='down'){
@@ -121,30 +128,45 @@ if(card===last_el){
 alert("Sorry, this card cannot be moved in this direction any further.");
 return
 }
+else{
+  
+let next_el=card.nextElementSibling;
+cont.insertBefore(next_el,card);
+}
 }
 else if(dir==='right'){
 let last_col=board.lastElementChild;
 if(parent===last_col){
   alert("Sorry, this card cannot be moved in this direction any further.");
+  return
+}
+else{
+let next_col=parent.nextElementSibling;
+next_cont=next_col.getElementsByClassName("col_content")[0];
+next_cont.appendChild(card);
 }
 }
 else if(dir==='left'){
 let first_col=board.firstElementChild;
 if(parent===first_col){
   alert("Sorry, this card cannot be moved in this direction any further.");
+  return
+}
+else{
+let prev_col=parent.previousElementSibling;
+prev_cont=prev_col.getElementsByClassName("col_content")[0];
+prev_cont.appendChild(card);
 }
 }
-return
+
       // Make a request to add card to column
-      axios.get('/movecard?card_id='+col_id+"&dir="+dir)
+      axios.get('/movecard?card_id='+card_id+"&dir="+dir)
         .then(function (response) {
-         
-      if(document.getElementById("col_content_"+col_id).childNodes.length > 0){
-        document.getElementById("col_content_"+col_id).innerHTML=document.getElementById("col_content_"+col_id).innerHTML.concat(response.data)
-      }
-      else{
-        document.getElementById("col_content_"+col_id).innerHTML=response.data
-      }
+          
+         if(response.data==="success"){
+
+
+         }
       
         })
         .catch(function (error) {

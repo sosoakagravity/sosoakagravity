@@ -14,6 +14,6 @@ class Columns extends Model
         'title',
     ];
     public function card(){
-        return $this->hasMany(Cards::class,'column_id','id');
+        return $this->hasMany(Cards::class,'column_id','id')->orderBy('row_number','asc');
     }
 }
