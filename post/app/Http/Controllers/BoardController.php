@@ -92,7 +92,7 @@ class BoardController extends Controller
 
            //get up card data
          
-           $up_card=Cards::whereRaw('row_number < ? and column_id = ?',[$row_number,$column_id])->orderBy('row_number','asc')->first();
+           $up_card=Cards::whereRaw('row_number < ? and column_id = ?',[$row_number,$column_id])->orderBy('row_number','desc')->first();
      
            if($up_card){
             $up_card_id=$up_card->id;
@@ -166,7 +166,7 @@ class BoardController extends Controller
             $row_number=$card->row_number;
             $column_id=$card->column_id;
           
-           $prev_col=Columns::where('id','<',$column_id)->first();
+           $prev_col=Columns::where('id','<',$column_id)->orderBy('id','desc')->first();
            $new_row_number=Cards::max('row_number')+1;
            $new_column_id=$prev_col->id;
 
@@ -185,7 +185,11 @@ class BoardController extends Controller
 
     }
         
-        
+        public function deleteColumn(Request $request){
+$col_id=$request->col;
+Columns::where('id',$col)->delete();
+return "success";
+        }
 
        
 

@@ -1,6 +1,6 @@
 <div class="col_main" id="col_{{ $column->id }}">
     <div class="col_hd">
-    <span v-on:click="delete_column({{ $column->id }})">X</span>
+    <span onclick="delete_column({{ $column->id }})">X</span>
     </div>
 
     <div class="col_title">

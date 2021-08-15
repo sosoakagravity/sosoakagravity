@@ -179,3 +179,26 @@ prev_cont.appendChild(card);
       
       //end et
 }
+let delete_column=(col_id)=>{
+
+  axios.get('/deletecolumn?col='+col_id)
+  .then(function (response) {
+
+  alert(response.data);
+  if(response.data==="success"){
+    let el=document.getElementById("col_"+col_id);
+    parent=el.parentNode;
+    parent.removeChild(el);
+
+  }
+
+  })
+  .catch(function (error) {
+    alert('failed to add column, pls check your internet connect!')
+    console.log(error);
+  })
+  .then(function () {
+   
+  });
+
+}
