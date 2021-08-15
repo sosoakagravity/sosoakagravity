@@ -14,7 +14,6 @@ var card = new Vue({
 axios.get('/addcolumn')
   .then(function (response) {
 
-    
 if(document.getElementById("board").childNodes.length > 0){
   var el=document.createElement("div");
   el.innerHTML=response.data;
@@ -45,10 +44,12 @@ else{
 
 });
 
+
 }
 else{
   document.getElementById("board").innerHTML=response.data;
 }
+document.getElementById("col_0").style.display='none';
 
   })
   .catch(function (error) {
@@ -184,12 +185,14 @@ let delete_column=(col_id)=>{
   axios.get('/deletecolumn?col='+col_id)
   .then(function (response) {
 
-  alert(response.data);
   if(response.data==="success"){
     let el=document.getElementById("col_"+col_id);
     parent=el.parentNode;
     parent.removeChild(el);
 
+if(document.getElementById("board").childNodes.length===1){
+  document.getElementById("col_0").style.display='block';
+}
   }
 
   })

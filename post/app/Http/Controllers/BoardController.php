@@ -187,7 +187,7 @@ class BoardController extends Controller
         
         public function deleteColumn(Request $request){
 $col_id=$request->col;
-Columns::where('id',$col)->delete();
+Columns::where('id',$col_id)->delete();
 return "success";
         }
 

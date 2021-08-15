@@ -16,11 +16,10 @@
        @include('column')
           
       @endforeach
-      @else
-      <div class="col_main card_main">
-        There are no columns yet
-      </div>
       @endif
+    </div>
+    <div class="col_main card_main" id="col_0" style="display:@if($columns->count()) {{'none'}}@else{{'block'}}@endif">
+      There are no columns yet
     </div>
     
     <div v-on:click="add_column(1)" id="add_new_col" class="col_main card_main">

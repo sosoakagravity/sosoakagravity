@@ -1,7 +1,7 @@
 <div class="card_main" id="card_{{ $card->id }}">
-    <div class="card_hd">
+    <!--<div class="card_hd">
 <span v-on:click="delete_card({{ $card->id }})">X</span>
-    </div>
+    </div>-->
     <div class="card">
       <div class="card_body">
         <div class="card_title">
