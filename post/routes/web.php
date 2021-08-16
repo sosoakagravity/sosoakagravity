@@ -19,3 +19,4 @@ Route::get('/addcolumn', [BoardController::class,'addColumn']);
 Route::get('/addcard', [BoardController::class,'addCard']);
 Route::get('/movecard', [BoardController::class,'moveCard']);
 Route::get('/deletecolumn', [BoardController::class,'deleteColumn']);
+Route::get('/editcard', [BoardController::class,'editCard']);

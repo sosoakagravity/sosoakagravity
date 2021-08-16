@@ -190,7 +190,15 @@ $col_id=$request->col;
 Columns::where('id',$col_id)->delete();
 return "success";
         }
+        public function editCard(Request $request){
+            $card_id=$request->card_id;
+            $title=$request->title;
+            $desc=$request->desc;
 
+            Cards::where('id',$card_id)->update(['title'=>$title,'description'=>$desc]);
+            return "success";
+
+                    }
        
 
 }

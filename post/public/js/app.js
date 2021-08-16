@@ -247,22 +247,18 @@ let card_id=escape(document.edit_card_form.card_id.value);
 
 event.preventDefault();
 
-axios.get('/editcard?card_id='+card_id)
+axios.get('/editcard?card_id='+card_id+"&title="+title+"&desc="+desc)
 .then(function (response) {
 
 if(response.data==="success"){
-  let el=document.getElementById("col_"+col_id);
-  parent=el.parentNode;
-  parent.removeChild(el);
-
-if(document.getElementById("board").childNodes.length===1){
-document.getElementById("col_0").style.display='block';
-}
+  
+  document.getElementById('card_title_'+card_id).innerHTML=document.edit_card_form.title.value;
+  document.getElementById('card_description_'+card_id).innerHTML=document.edit_card_form.desc.value;
+  modal.style.display = "none";
 }
 
 })
 .catch(function (error) {
-  alert('failed to add column, pls check your internet connect!')
   console.log(error);
 })
 .then(function () {
