@@ -205,3 +205,68 @@ if(document.getElementById("board").childNodes.length===1){
   });
 
 }
+
+//modal start
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+//var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+var show_modal = (event,id)=> {
+let title=event.target.getElementsByClassName("card_title")[0].innerHTML;
+document.edit_card_form.title.value=title;
+let desc=event.target.getElementsByClassName("card_description")[0].innerHTML;
+document.edit_card_form.desc.value=desc;
+document.edit_card_form.card_id.value=id;
+
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = ()=> {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = (event)=> {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+
+}
+//save card
+var edit_card=(event)=>{
+let title=escape(document.edit_card_form.title.value);
+let desc=escape(document.edit_card_form.desc.value);
+let card_id=escape(document.edit_card_form.card_id.value);
+
+event.preventDefault();
+
+axios.get('/editcard?card_id='+card_id)
+.then(function (response) {
+
+if(response.data==="success"){
+  let el=document.getElementById("col_"+col_id);
+  parent=el.parentNode;
+  parent.removeChild(el);
+
+if(document.getElementById("board").childNodes.length===1){
+document.getElementById("col_0").style.display='block';
+}
+}
+
+})
+.catch(function (error) {
+  alert('failed to add column, pls check your internet connect!')
+  console.log(error);
+})
+.then(function () {
+ 
+});
+
+}

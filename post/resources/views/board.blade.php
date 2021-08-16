@@ -29,7 +29,26 @@
     </div>
   
   </div>
-  
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Change card properties</p>
+    <form action="" onsubmit="return edit_card(event)" name="edit_card_form">
+      <label for="title">Title:</label><br>
+      <input type="text" id="title" name="title" value=""><br>
+      <label for="desc">description:</label><br>
+      <input type="text" id="desc" name="desc" value=""><br><br>
+      <input type="hidden" id="card_id" name="card_id" value="">
+      <input type="submit" value="Save">
+    </form>
+    
+  </div>
+
+</div>
+
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="{{ asset('js/app.js') }}"></script>

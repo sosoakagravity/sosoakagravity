@@ -2,13 +2,11 @@
     <!--<div class="card_hd">
 <span v-on:click="delete_card({{ $card->id }})">X</span>
     </div>-->
-    <div class="card">
+    <div class="card" onclick="show_modal(event,{{ $card->id }})">
       <div class="card_body">
-        <div class="card_title">
-          {{ $card->title }}
+        <div class="card_title">{{ $card->title }}
         </div>
-        <div class="card_description" id="card_description_{{ $card->id }}">
-            {{ $card->description }}
+        <div class="card_description" id="card_description_{{ $card->id }}">{{ $card->description }}
         </div>
       </div>
       <div class="card_nav">
