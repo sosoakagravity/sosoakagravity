@@ -4,7 +4,7 @@
     </div>-->
     <div class="card" onclick="show_modal(event,{{ $card->id }})">
       <div class="card_body">
-        <div class="card_title" id="card_title_{{ $card->title }}">{{ $card->title }}
+        <div class="card_title" id="card_title_{{ $card->id }}">{{ $card->title }}
         </div>
         <div class="card_description" id="card_description_{{ $card->id }}">{{ $card->description }}
         </div>
